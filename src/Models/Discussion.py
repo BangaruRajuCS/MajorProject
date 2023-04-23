@@ -2,13 +2,13 @@ import pandas
 # import glob
 class Discussion:
 	def __init__(self):
-		#directory_path = 'C:\\Users\\vaishu\\Desktop\\Project\\MPphase2\\input'
+		#directory_path = 'Users\\vaishu\\Desktop\\Project\\MPphase2\\input'
 		#Retriving disucssion datasheet from createdebate execel 
-		DiscussionSheet = pandas.read_excel('createdebate_released_no_parse.xlsx', sheet_name='discussion')
+		discussionSheet = pandas.read_excel('createdebate_released_no_parse.xlsx', sheet_name='discussion')
         # Retiving particular coloumn form the sheet
-		self.__discussionId = DiscussionSheet['discussion_id']
-		self.__title=DiscussionSheet['title']
-		self.__initiatingAuthorId=DiscussionSheet['initiating_author_id']
+		self.__discussionId = discussionSheet['discussion_id']
+		self.__title=discussionSheet['title']
+		self.__initiatingAuthorId=discussionSheet['initiating_author_id']
 	#get and set function for discussion id variable
 	def get_discussinId(self):
 		return self.__discussionId

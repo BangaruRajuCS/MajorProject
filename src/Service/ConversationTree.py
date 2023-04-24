@@ -1,6 +1,9 @@
+from typing import List
+from ..Model.Post import Post
+
 class ConversationTree:
 
-    def __init__(self, initiatedAuthorId, discussionId,discussionTitle, posts):
+    def __init__(self, initiatedAuthorId:int, discussionId:int,discussionTitle:str, posts:List[Post]):
         self.initiatedAuthorId = initiatedAuthorId
         self.discussionId=discussionId
         self.discussionTitle = discussionTitle
@@ -13,6 +16,10 @@ class ConversationTree:
         to work
         :return:
         '''
+        for post in self.posts:
+
+
+
 
 
     def showConversationTree(self):

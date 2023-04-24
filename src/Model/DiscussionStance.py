@@ -1,5 +1,4 @@
 import pandas
-# import glob
 class DiscussionStance:
 	def __init__(self,discussionId,discussionStanceId,discussionStance):
 		self.discussionId =discussionId

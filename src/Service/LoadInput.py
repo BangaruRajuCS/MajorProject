@@ -7,7 +7,7 @@ import pandas
         discussionRecords={key=discussionId value=DiscussionClass}
         discussionStanceRecords={key =discussion_id+discussion_stance_id value=DiscussionStanceClass}
         discussionTopicRecords={key=discussionId+topicId value=DiscussionTopicClass}
-        postRecords={key=postId value=PostClass}
+        postRecords={key=discussionId+postId value=PostClass}
         quoteRecords={key=postId+SourcePostId value=QuoteClass}
         topicRecords={key=topicId value=TopicClass}
         topicStanceRecords={key=topicId+topicStanceId value=TopicStanceClass}

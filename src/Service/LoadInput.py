@@ -1,9 +1,11 @@
 import pandas
 
+for every row in AuthorSheet 
+
 
 '''
     Format:
-        authorRecords ={ key=authorId ,value=AuthorClass}
+        authorRecords ={ key=authorId ,value=AuthorClass }
         discussionRecords={key=discussionId value=DiscussionClass}
         discussionStanceRecords={key =discussion_id+discussion_stance_id value=DiscussionStanceClass}
         discussionTopicRecords={key=discussionId+topicId value=DiscussionTopicClass}
@@ -33,8 +35,8 @@ class LoadInput:
         self.quoteSheet = pandas.read_excel(filePath, sheet_name="quote")
         self.topicSheet = pandas.read_excel(filePath, sheet_name="topic")
         self.topicStanceSheet = pandas.read_excel(filePath, sheet_name="topic_stance")
-        self.authorRecords=None
-        self.discussionRecords=None
+        self.authorRecords={}
+        self.discussionRecords={}
         #remaining Vaishu
 
 
@@ -46,12 +48,6 @@ class LoadInput:
 
 
     def loadDataFromAuthorSheet(self):
-        pass
-
-
-
-
-
 
 
 

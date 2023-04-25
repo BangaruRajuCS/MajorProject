@@ -62,8 +62,8 @@ class LoadInput:
 
 #.............................................................................................................
     def loadDataFromAuthorSheet(self):
+        columnsToCheck = ['author_id']
         for index, row in self.authorSheet.iterrows():
-            columnsToCheck = ['author_id']
             if row[columnsToCheck].isnull().values.any():
                 continue
             k = (row['author_id'])

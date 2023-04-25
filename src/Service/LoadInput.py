@@ -63,7 +63,8 @@ class LoadInput:
 #.............................................................................................................
     def loadDataFromAuthorSheet(self):
         for index, row in self.authorSheet.iterrows():
-            if row[columnsToCheck].isnull().values.any() or (type(row['author_id']) == str and not row['auhtor_id'].isdigit()):
+            columnsToCheck = ['author_id']
+            if row[columnsToCheck].isnull().values.any():
                 continue
             k = (row['author_id'])
             key = str(k) 
@@ -97,7 +98,7 @@ class LoadInput:
             self.discussionStanceRecords[key]=obj
         print(self.discussionStanceRecords)
 #.....................................................................................................
-    def loadDataFromdiscussionTopicSheet(self):
+    def loadDataFromDiscussionTopicSheet(self):
         columnsToCheck = ['discussion_id', 'topic_id']
         for index, row in self.discussionTopicSheet.iterrows():
             #here data is in good formate no need to check wheather the columns contain strings or not so 
@@ -145,7 +146,6 @@ class LoadInput:
                 continue
             k = (row['post_id'])
             key = str(k)
-
             obj= Post(row['discussion_id'], row['author_id'], row['post_id'],row['parent_post_id'] ,row['response_type'])
             self.postRecords[key]=obj
         print(self.postRecords)
@@ -159,19 +159,17 @@ Mainobject.loadDataFromPostSheet()
                 continue
             k = (row['post_id'], row['source_post_id'])
             key = str(k[0]) + '_' + str(k[1])
-
             obj=Quote(row['discussion_id'], row['post_id'], row['source_post_id'])
             self.quoteRecords[key]=obj
         print(self.quoteRecords)
 #.............................................................................................................
-
 """
 
 
 
 Mainobject=LoadInput('C:/Users/vaishu/Desktop/Project/MPphase2/input/createdebate_released_no_parse.xlsx')
-"""Mainobject.loadDataFromAuthorSheet()
+Mainobject.loadDataFromAuthorSheet()
 Mainobject.loadDataFromDiscussionSheet()
 Mainobject.loadDataFromDiscussionStanceSheet()
-Mainobject.loadDataFromPostSheet()
-Mainobject.loadDataFromQuoteSheet()"""
+Mainobject.loadDataFromTopicSheet()
+Mainobject.loadDataFromTopicStanceSheet()

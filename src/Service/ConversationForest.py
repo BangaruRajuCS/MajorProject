@@ -1,6 +1,6 @@
-from LoadInput import LoadInput
-from ConversationTree import ConversationTree
-from ..Model.Discussion import Discussion
+from src.Service.LoadInput import LoadInput
+from src.Service.ConversationTree import ConversationTree
+from src.Model.Discussion import Discussion
 
 
 class ConversationForest:

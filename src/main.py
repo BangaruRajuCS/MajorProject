@@ -1,23 +1,8 @@
-from .Service.LoadInput import LoadInput
-from .Service.ConversationTree import ConversationTree
-from .Service.ConversationForest import ConversationForest
-from .Service.InteractionNetwork import InteractionNetwork
+from src.Service.LoadInput import LoadInput
 
-filePath = ""
-topic = None
-loadInput = LoadInput(filePath)
+
+filePath="/home/br/Desktop/projectPhase2/MajorProject/input/convinceme_no_parse.xlsx"
+
+loadInput=LoadInput(filePath)
 loadInput.loadDataFromAllSheets()
-forest = ConversationForest(loadInput)
-forest.buildConversationTrees()
-trees = forest.getAllConversationTrees()
-interactionNetworks = {}  # topicName(key) InteractionNetworkClass(value)
-for topic in trees.keys():
-    tree = trees[topic]
-    tempInteractionNetwork = InteractionNetwork(tree)
-    interactionNetworks[topic] = tempInteractionNetwork
-
-for topic in trees.keys():
-    tree = trees[topic]
-    graph = interactionNetworks[topic]
-    tree.showConversationTree()
-    graph.showInteractionNetwork()
+print(loadInput.authorRecords)

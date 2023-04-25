@@ -1,5 +1,5 @@
 from typing import Dict
-from ..Model.Post import Post
+from src.Model.Post import Post
 import networkx as nx
 import matplotlib.pyplot as plt
 

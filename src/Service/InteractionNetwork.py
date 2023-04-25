@@ -1,7 +1,7 @@
 from ConversationTree import ConversationTree
 import networkx as nx
 from typing import List
-from ..Model.Quote import Quote
+from src.Model.Quote import Quote
 import matplotlib.pyplot as plt
 
 

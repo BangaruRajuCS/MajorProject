@@ -57,6 +57,7 @@ class LoadInput:
 
     def loadDataFromAllSheets(self):
         self.loadDataFromAuthorSheet()
+        
         #call the  remaining loadDataFrom*Records()
 
 
@@ -136,21 +137,19 @@ class LoadInput:
             obj= TopicStance(row['topic_id'],row['topic_stance_id'],  row['stance'])
             self.topicStanceRecords[key]=obj
         print(self.topicStanceRecords)
-#................................................................................
-"""
+#.....................................................................................................
     def loadDataFromPostSheet(self):
-        columnsToCheck = ['discussion_id', 'author_id','post_id' 'response_type']
+        columnsToCheck = ['discussion_id', 'author_id','post_id','response_type']
         for index, row in self.postSheet.iterrows():
             #here data is in good formate no need to check wheather the columns contain strings or not so 
             if row[columnsToCheck].isnull().values.any():
                 continue
             k = (row['post_id'])
             key = str(k)
-            obj= Post(row['discussion_id'], row['author_id'], row['post_id'],row['parent_post_id'] ,row['response_type'])
+            obj= Post(row['discussion_id'],row['author_id'],  row['post_id'], row['parent_post_id'], row['response_type'] )
             self.postRecords[key]=obj
         print(self.postRecords)
-Mainobject=LoadInput('C:/Users/vaishu/Desktop/Project/MPphase2/input/createdebate_released_no_parse.xlsx')
-Mainobject.loadDataFromPostSheet()
+
 #........................................................................................................
     def loadDataFromQuoteSheet(self):
         columnsToCheck = ['discussion_id', 'post_id', 'source_post_id']
@@ -163,9 +162,6 @@ Mainobject.loadDataFromPostSheet()
             self.quoteRecords[key]=obj
         print(self.quoteRecords)
 #.............................................................................................................
-"""
-
-
 
 Mainobject=LoadInput('C:/Users/vaishu/Desktop/Project/MPphase2/input/createdebate_released_no_parse.xlsx')
 Mainobject.loadDataFromAuthorSheet()
@@ -173,3 +169,5 @@ Mainobject.loadDataFromDiscussionSheet()
 Mainobject.loadDataFromDiscussionStanceSheet()
 Mainobject.loadDataFromTopicSheet()
 Mainobject.loadDataFromTopicStanceSheet()
+Mainobject.loadDataFromPostSheet()
+Mainobject.loadDataFromQuoteSheet()

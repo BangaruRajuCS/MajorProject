@@ -1,5 +1,6 @@
 from LoadInput import LoadInput
 from ConversationTree import ConversationTree
+from ..Model.Discussion import Discussion
 
 
 class ConversationForest:
@@ -9,26 +10,24 @@ class ConversationForest:
         self.loadInputObject = loadInputObject
 
     def buildConversationTrees(self):
-        '''
-        :return:
-        '''
+        discussionRecords = self.loadInputObject.discussionRecords
+        for key, value in discussionRecords.items():
+            self.conversationTrees[key] = self.buildConversationTree(value)
 
-    def buildConversationTree(self, topic):
-        '''
+    def buildConversationTree(self, discussion: Discussion):
+        initiatedAuthorId = discussion.initiatingAuthorId
+        discussionId = discussion.discussionId
+        discussionTitle = discussion.title
+        posts = {}
+        for post in self.loadInputObject.postRecords:
+            if post.discussionId == discussionId:
+                posts[post.postId] = post
 
-        :param topic:
-        :return:
-        '''
+        conversationTree = ConversationTree(initiatedAuthorId, discussionId, discussionTitle, posts)
+        return conversationTree
 
     def getAllConversationTrees(self):
-        '''
+        return self.conversationTrees
 
-        :return: Dictionary with key,value as topicTitle,ConversationTree
-        '''
 
-    def getConversationTree(self, topic):
-        '''
 
-        :param topic:
-        :return: ConversationTree
-        '''

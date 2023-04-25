@@ -2,6 +2,7 @@ from typing import Dict
 from src.Model.Post import Post
 import networkx as nx
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 class ConversationTree:
@@ -19,7 +20,7 @@ class ConversationTree:
     def buildConversationTree(self):
         for post in self.posts.values():
             if post.discussionId == self.discussionId:
-                if post.parentPostId is None:
+                if np.isnan(post.parentPostId):
                     self.tree[self.originalPost].append(str(post.postId))
                 elif str(post.parentPostId) not in self.tree.keys():
                     self.tree[str(post.parentPostId)] = []
@@ -31,12 +32,10 @@ class ConversationTree:
         diGraph = nx.DiGraph()
         for node in self.tree.keys():
             diGraph.add_node(str(node))
-
         for node in self.tree.keys():
             for reply in self.tree[node]:
                 diGraph.add_edge(str(reply), str(node))
-
-        nx.draw(diGraph)
+        nx.draw(diGraph,with_labels=True)
         plt.show()
 
     def getConversationTree(self):

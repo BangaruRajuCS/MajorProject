@@ -1,13 +1,14 @@
 from src.Service.LoadInput import LoadInput
 from src.Service.ConversationTree import ConversationTree
 from src.Model.Discussion import Discussion
+from typing import Dict
 
 
 class ConversationForest:
 
-    def __int__(self, loadInputObject: LoadInput):
-        self.conversationTrees = {}
-        self.loadInputObject = loadInputObject
+    def __init__(self,loadInputObject:LoadInput):
+        self.loadInputObject=loadInputObject
+        self.conversationTrees:Dict[str,ConversationTree]={}
 
     def buildConversationTrees(self):
         discussionRecords = self.loadInputObject.discussionRecords
@@ -19,10 +20,9 @@ class ConversationForest:
         discussionId = discussion.discussionId
         discussionTitle = discussion.title
         posts = {}
-        for post in self.loadInputObject.postRecords:
+        for post in self.loadInputObject.postRecords.values():
             if post.discussionId == discussionId:
-                posts[post.postId] = post
-
+                posts[str(post.postId)] = post
         conversationTree = ConversationTree(initiatedAuthorId, discussionId, discussionTitle, posts)
         return conversationTree
 

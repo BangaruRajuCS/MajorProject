@@ -9,8 +9,6 @@ from src.Model.Topic import Topic
 from src.Model.TopicStance import TopicStance
 from src.Model.Discussion import  Discussion
 
-# import Author.py
-# or every row in AuthorSheet
 '''
     Format:
         authorRecords ={ key=authorId ,value=AuthorClass }
@@ -27,9 +25,6 @@ from src.Model.Discussion import  Discussion
             object=*Model(.....)
             key=extract key from row
             *Records[key]=object
-        
-    
-    
 '''
 
 
@@ -41,7 +36,7 @@ class LoadInput:
         self.discussionStanceSheet = pandas.read_excel(filePath, sheet_name="discussion_stance")
         self.discussionTopicSheet = pandas.read_excel(filePath, sheet_name="discussion_topic")
         self.postSheet = pandas.read_excel(filePath, sheet_name="post")
-        self.quoteSheet = pandas.read_excel(filePath, sheet_name="quote")
+        #self.quoteSheet = pandas.read_excel(filePath, sheet_name="quote")
         self.topicSheet = pandas.read_excel(filePath, sheet_name="topic")
         self.topicStanceSheet = pandas.read_excel(filePath, sheet_name="topic_stance")
         # creating individual empty records
@@ -60,7 +55,6 @@ class LoadInput:
         self.loadDataFromPostSheet()
         # call the  remaining loadDataFrom*Records()
 
-    # .............................................................................................................
     def loadDataFromAuthorSheet(self):
         columnsToCheck = ['author_id']
         for index, row in self.authorSheet.iterrows():
@@ -74,7 +68,7 @@ class LoadInput:
             obj = Author(row['author_id'])
             self.authorRecords[key] = obj
 
-    # ................................................................................................
+
     def loadDataFromDiscussionSheet(self):
         columnsToCheck = ['discussion_id', 'title', 'initiating_author_id']
         for index, row in self.discussionSheet.iterrows():
@@ -87,7 +81,6 @@ class LoadInput:
             obj = Discussion(row['discussion_id'], row['title'], row['initiating_author_id'])
             self.discussionRecords[key] = obj
 
-    # .....................................................................................................
     def loadDataFromDiscussionStanceSheet(self):
         columnsToCheck = ['discussion_id', 'discussion_stance_id', 'discussion_stance']
         for index, row in self.discussionStanceSheet.iterrows():
@@ -114,7 +107,7 @@ class LoadInput:
             self.discussionTopicRecords[key] = obj
         print(self.discussionTopicRecords)
 
-    # .....................................................................................................
+
     def loadDataFromTopicSheet(self):
         columnsToCheck = ['topic_id', 'topic']
         for index, row in self.topicSheet.iterrows():
@@ -128,7 +121,7 @@ class LoadInput:
             self.topicRecords[key] = obj
         print(self.topicRecords)
 
-    # .....................................................................................................
+
     def loadDataFromTopicStanceSheet(self):
         columnsToCheck = ['topic_id', 'topic_stance_id', 'stance']
         for index, row in self.topicStanceSheet.iterrows():
@@ -150,7 +143,7 @@ class LoadInput:
                 continue
             k = (row['post_id'])
             key =str(row['discussion_id'])+"_"+str(k)
-            obj= Post(row['discussion_id'], row['author_id'], row['post_id'],row['parent_post_id'] ,row['response_type'])
+            obj= Post(row['discussion_id'], row['author_id'], row['post_id'],row['parent_post_id'])
             self.postRecords[key]=obj
 
     def loadDataFromQuoteSheet(self):

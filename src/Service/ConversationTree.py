@@ -38,5 +38,6 @@ class ConversationTree:
         nx.draw(diGraph,with_labels=True)
         plt.show()
 
+
     def getConversationTree(self):
         return self.tree

@@ -6,9 +6,13 @@ from typing import Dict
 
 class ConversationForest:
 
-    def __init__(self,loadInputObject:LoadInput):
-        self.loadInputObject=loadInputObject
-        self.conversationTrees:Dict[str,ConversationTree]={}
+    def __int__(self):
+        self.loadInputObject = None
+        self.conversationTrees = None
+
+    def __init__(self, loadInputObject: LoadInput):
+        self.loadInputObject = loadInputObject
+        self.conversationTrees: Dict[str, ConversationTree] = {}
 
     def buildConversationTrees(self):
         discussionRecords = self.loadInputObject.discussionRecords
@@ -28,6 +32,3 @@ class ConversationForest:
 
     def getAllConversationTrees(self):
         return self.conversationTrees
-
-
-

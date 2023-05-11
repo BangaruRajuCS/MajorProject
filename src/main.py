@@ -6,12 +6,7 @@ from src.Service.SDP import SDP
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
-
-
-
-filePath = "/home/br/Desktop/projectPhase2/MajorProject/input/createdebate_released_no_parse.xlsx"
-
+filePath = "../input/createdebate_released_no_parse.xlsx"
 
 def showGraph(graph, bestCut):
     pos = nx.spring_layout(graph, seed=3113794652)
@@ -59,5 +54,3 @@ for key in trees.keys():
         showGraph(graphAfter2CoreReduction, bestCut)
     except Exception as e:
         print("error occured : ", e)
-
-    break

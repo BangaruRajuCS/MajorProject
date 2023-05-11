@@ -53,7 +53,6 @@ class LoadInput:
         self.loadDataFromAuthorSheet()
         self.loadDataFromDiscussionSheet()
         self.loadDataFromPostSheet()
-        # call the  remaining loadDataFrom*Records()
 
     def loadDataFromAuthorSheet(self):
         columnsToCheck = ['author_id']
@@ -145,7 +144,6 @@ class LoadInput:
             key =str(row['discussion_id'])+"_"+str(k)
             obj= Post(row['discussion_id'], row['author_id'], row['post_id'],row['parent_post_id'])
             self.postRecords[key]=obj
-
     def loadDataFromQuoteSheet(self):
         columnsToCheck = ['discussion_id', 'post_id', 'source_post_id']
         for index, row in self.quoteSheet.iterrows():

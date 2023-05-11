@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 
 filePath = "../input/createdebate_released_no_parse.xlsx"
 
+
+
 def showGraph(graph, bestCut):
     pos = nx.spring_layout(graph, seed=3113794652)
     users = sorted(list(graph.nodes))

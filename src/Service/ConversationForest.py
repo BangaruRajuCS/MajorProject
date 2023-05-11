@@ -6,10 +6,6 @@ from typing import Dict
 
 class ConversationForest:
 
-    def __int__(self):
-        self.loadInputObject = None
-        self.conversationTrees = None
-
     def __init__(self, loadInputObject: LoadInput):
         self.loadInputObject = loadInputObject
         self.conversationTrees: Dict[str, ConversationTree] = {}

@@ -12,7 +12,7 @@ filePath = "../input/createdebate_released_no_parse.xlsx"
 
 
 
-def showGraph(graph, bestCut):
+def showGraph(graph, bestCut,topic):
     pos = nx.spring_layout(graph, seed=3113794652)
     users = sorted(list(graph.nodes))
     postiveStance = []
@@ -33,6 +33,7 @@ def showGraph(graph, bestCut):
     nx.draw_networkx_nodes(graph, pos, nodelist=postiveStance, node_color="tab:green", **options)
     nx.draw_networkx_edges(graph, pos, width=1.0, alpha=0.5)
     nx.draw_networkx_labels(graph, pos, usersLabels, font_size=11, font_color="black")
+    plt.title(topic)
     plt.tight_layout()
     plt.axis("off")
     plt.show()
@@ -55,6 +56,6 @@ for key in trees.keys():
         sdpObj = SDP(graphAfter2CoreReduction)
         sdpObj.runSDP()
         bestCut = sdpObj.getBestCut()
-        showGraph(graphAfter2CoreReduction, bestCut)
+        showGraph(graphAfter2CoreReduction, bestCut,tree.discussionTitle)
     except Exception as e:
         print("error occured : ", e)

@@ -19,6 +19,8 @@ class InteractionNetwork:
             u = self.conversationTree.originalPost
             if node != self.conversationTree.originalPost:
                 u = str(self.conversationTree.posts[str(node)].authorId)
+            else:
+                continue
             for anotherPost in self.conversationTree.tree[str(node)]:
                 v = str(self.conversationTree.posts[str(anotherPost)].authorId)
                 args = self.graph.get_edge_data(u, v, -1)

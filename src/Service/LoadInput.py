@@ -7,7 +7,7 @@ from src.Model.Post import Post
 from src.Model.Quote import Quote
 from src.Model.Topic import Topic
 from src.Model.TopicStance import TopicStance
-from src.Model.Discussion import  Discussion
+from src.Model.Discussion import Discussion
 
 '''
     Format:
